@@ -1,71 +1,28 @@
-// const coding = ["js", 'cpp', 'python', 'java', 'c']
+const form = document.querySelector('form')
 
-// const value = coding.forEach( (item)=> {
-//     // console.log(item);
-//     return item
-// } )
-// console.log(value);
+form.addEventListener('submit', function(e){
+    e.preventDefault()
 
-// "forEach returns nothing"
+    const height = parseInt(document.querySelector('#height').value)
+    const weight = parseInt(document.querySelector('#weight').value)
+    const result = document.querySelector('#results')
+    const message = document.querySelector('#message')
 
+    if (height === '' || height < 0 || isNaN(height)) {
+        result.innerHTML = `Please give a valid height ${height}`
+    } else if (weight === '' || weight < 0 || isNaN(weight)) {
+        result.innerHTML = `Please give a valid weight ${weight}`
+    } else {
+        const bmi = (weight / ((height*height)/10000)).toFixed(2)
+        //show the result
+        result.innerHTML = `<span>${bmi}</span>`
+        if (bmi < 18.6) {
+            message.innerHTML = 'Under Weight'
+        } else if (bmi > 18.6 && bmi < 24.9){
+            message.innerHTML = 'Normal Range'
+        }else {
+            message.innerHTML = 'Over Weight'
+        }
+    }
 
-// filter()
-// const myNums = [1, 2, ,3 ,4 , 5, 6, 7, 8, 9, 10]
-
-// const newNums = myNums.filter( (num) => num > 4 )
-// const newNums = myNums.filter( (num) => (num > 4) )
-// const newNums = myNums.filter( (num) => {
-//     return num > 4
-// } )
-
-// const newNums = []
-// myNums.forEach( (num) => {
-//     if (num > 4){
-//         newNums.push(num)
-//     }
-// } )
-// console.log(newNums);
-
-
-// map()
-// const myNums = [1, 2, ,3 ,4 , 5, 6, 7, 8, 9, 10]
-
-// const newNums = myNums.map( (num) => num * 10).map((num) => num + 1).filter( (num) => num > 40)
-
-// console.log(newNums);
-
-
-// reduce()
-// const myNums = [1, 2, 3]
-
-// const intialValue = 0
-// const result = myNums.reduce(function (acc, curval) {
-//     console.log(`accumulator : ${acc} , current value : ${curval}`);
-//     return acc + curval
-// }, 0)
-// // const result = myNums.reduce( (accumulator, currentValue) => accumulator + currentValue , intialValue)
-// console.log(result);
-
-
-const shoppingCart = [
-    {
-        itemName : 'js course',
-        price : 5999
-    },
-    {
-        itemName : 'java course',
-        price : 6999
-    },
-    {
-        itemName : 'python course',
-        price : 3999
-    },
-    {
-        itemName : 'ml course',
-        price : 15999
-    },
-]
-
-// const totalPrice = shoppingCart.map( (pr) => pr.price ).reduce( (acc, crr) => acc + crr , 0)
-const totalPrice = shoppingCart.reduce( (acc, item) => acc + item.price , 0)
-console.log(totalPrice);
+})
