@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    align-items: center;
+    height: 100vh;
+    justify-content: space-evenly;
+}
+.buttons{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+}
+.button{
+    width: 20px;
+    height: 20px;
+    padding: 40px;
+    border: 1px solid black;
+}
+#grey{
+    background-color: grey;
+    cursor: pointer;
+}
+#white{
+    background-color: white;
+    cursor: pointer;
+}
+#blue{
+    background-color: blue;
+    cursor: pointer;
+}
+#yellow{
+    background-color: yellow;
+    cursor: pointer;
+}
